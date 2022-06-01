@@ -233,7 +233,7 @@ currentDate=$(date)
 tomorrow=$(date +"%Y-%m-%dT00:00:00Z" -d "$currentDate +1 days")
 deploymentName=ADXIoTAnalyticsDeployment$randomNum
 rgName=ADXIoTAnalytics$randomNum
-principalId=$(az ad signed-in-user show --query objectId -o tsv)
+principalId=$(az ad signed-in-user show --query id -o tsv)
 
 clear
 echo "Please select from below deployment options"
