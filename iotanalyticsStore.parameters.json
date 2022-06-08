@@ -29,6 +29,9 @@
       "deployADT": {
         "value": true
       },
+      "deployStorage": {
+        "value": true
+      },
       "IoTCentralType": {
         "value": "Store Analytics"
       },

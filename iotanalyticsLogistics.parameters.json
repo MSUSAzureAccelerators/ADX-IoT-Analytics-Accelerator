@@ -21,12 +21,15 @@
         "value": "digitaltwinpm"
       },
       "numDevices": {
-        "value": 1000
+        "value": 30
       },
       "deployADX": {
         "value": false
       },
       "deployADT": {
+        "value": false
+      },
+      "deployStorage": {
         "value": false
       },
       "IoTCentralType": {

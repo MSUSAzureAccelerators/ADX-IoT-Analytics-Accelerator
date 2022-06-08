@@ -4,6 +4,7 @@ param adxSKU string = 'Standard_D11_v2'
 param eventHubName string = 'eventhubiot'
 param iotCentralName string = 'iotcentraliot'
 param digitalTwinlName string = 'digitaltwiniot'
+param deployStorage bool
 param saName string = 'iotmonitoringsa'
 param deploymentSuffix string
 param numDevices int
@@ -53,7 +54,7 @@ module eventhub './modules/eventhub.bicep' = {
   }
 }
 
-module storageAccount './modules/storage.bicep' = {
+module storageAccount './modules/storage.bicep' = if(deployStorage){
   name: '${saName}${deploymentSuffix}'
   params: {
    saname: '${saName}${deploymentSuffix}'
@@ -104,8 +105,8 @@ output eventhubClusterId string = eventhub.outputs.eventhubClusterId
 output eventhubNamespace string = eventhub.outputs.eventhubNamespace
 output digitalTwinName string = deployADT ? digitalTwin.outputs.digitalTwinName : 'na'
 output digitalTwinHostName string = deployADT ? digitalTwin.outputs.digitalTwinHostName : 'na'
-output saName string = storageAccount.outputs.saName
-output saId string = storageAccount.outputs.saId
+output saName string = deployStorage ? storageAccount.outputs.saName : 'na'
+output saId string = deployStorage ? storageAccount.outputs.saId : 'na'
 output adxName string = deployADX ? adxCluster.outputs.adxName : 'na' 
 output adxClusterId string = deployADX ? adxCluster.outputs.adxClusterId : 'na'
 output location string = deploymentLocation
