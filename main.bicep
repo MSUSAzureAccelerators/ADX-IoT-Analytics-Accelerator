@@ -8,7 +8,6 @@ param deployStorage bool
 param saName string = 'iotmonitoringsa'
 param deploymentSuffix string
 param numDevices int
-param principalId string
 param deployADX bool
 param deployADT bool
 @allowed([
@@ -30,7 +29,6 @@ module iotStoreCentralApp './modules/iotcentral.bicep' = {
     iotDisplayName: IoTCentralType
     iotTemplate: iotTemplate
     location: deploymentLocation
-    principalId: principalId
   }
 }
 
@@ -69,7 +67,6 @@ module digitalTwin './modules/digitaltwin.bicep' = if(deployADT) {
   params: {
     digitalTwinName: '${digitalTwinlName}${deploymentSuffix}'
     location: deploymentLocation
-    principalId: principalId
   }
 }
 
@@ -87,7 +84,7 @@ resource eventHubReference 'Microsoft.EventHub/namespaces@2021-11-01'  existing 
 
 // Grant Azure Event Hubs Data receiver role to ADX
 resource roleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = if(deployADX){
-  name: guid(resourceGroup().id, principalId, eventHubsDataReceiverRoleDefinition.id)
+  name: guid(resourceGroup().id, eventHubsDataReceiverRoleDefinition.id)
   scope: eventHubReference
   properties: {
     roleDefinitionId: eventHubsDataReceiverRoleDefinition.id
@@ -105,6 +102,7 @@ output eventhubClusterId string = eventhub.outputs.eventhubClusterId
 output eventhubNamespace string = eventhub.outputs.eventhubNamespace
 output digitalTwinName string = deployADT ? digitalTwin.outputs.digitalTwinName : 'na'
 output digitalTwinHostName string = deployADT ? digitalTwin.outputs.digitalTwinHostName : 'na'
+output digitalTwinId string = deployADT ? digitalTwin.outputs.digitalTwinId : 'na'
 output saName string = deployStorage ? storageAccount.outputs.saName : 'na'
 output saId string = deployStorage ? storageAccount.outputs.saId : 'na'
 output adxName string = deployADX ? adxCluster.outputs.adxName : 'na' 

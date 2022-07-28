@@ -54,12 +54,12 @@ function deploy_azure_services() {
     then
         az deployment group create -n $deploymentName -g $rgName \
             --template-file main.bicep \
-            --parameters deploymentSuffix=$randomNum principalId=$principalId @iotanalyticsStore.parameters.json \
+            --parameters deploymentSuffix=$randomNum @iotanalyticsStore.parameters.json \
             --only-show-errors --output none
     else
         az deployment group create -n $deploymentName -g $rgName \
             --template-file main.bicep \
-            --parameters deploymentSuffix=$randomNum principalId=$principalId @iotanalyticsLogistics.parameters.json \
+            --parameters deploymentSuffix=$randomNum @iotanalyticsLogistics.parameters.json \
             --only-show-errors --output none
     fi
 }
@@ -73,6 +73,7 @@ function get_deployment_output() {
         saKey=$(az storage account keys list --account-name $saName --query [0].value -o tsv)
         saId=$(az deployment group show -n $deploymentName -g $rgName --query properties.outputs.saId.value --output tsv)
     fi
+    adtID=$(az deployment group show -n $deploymentName -g $rgName --query properties.outputs.digitalTwinId.value --output tsv)
     adxName=$(az deployment group show -n $deploymentName -g $rgName --query properties.outputs.adxName.value --output tsv)
     adxResoureId=$(az deployment group show -n $deploymentName -g $rgName --query properties.outputs.adxClusterId.value --output tsv)
     location=$(az deployment group show -n $deploymentName -g $rgName --query properties.outputs.location.value --output tsv)
@@ -236,7 +237,7 @@ currentDate=$(date)
 tomorrow=$(date +"%Y-%m-%dT00:00:00Z" -d "$currentDate +1 days")
 deploymentName=ADXIoTAnalyticsDeployment$randomNum
 rgName=ADXIoTAnalytics$randomNum
-principalId=$(az ad signed-in-user show --query id -o tsv)
+
 
 clear
 echo "Please select from below deployment options"
@@ -253,12 +254,19 @@ do
     read -p "Enter number:" iotCType
 done
 
+
 # Setup array to utilize when assiging devices to departments and patients
 floors=('DAL1' 'DAL2' 'DAL3' 'DAL4' 'DAL5' 'DAL6' 'SEA1' 'SEA2' 'SEA3' 'SEA4' 'SEA5' 'SEA6' 'ATL1' 'ATL2' 'ATL3' 'ATL4' 'ATL5' 'ATL6')
 
 banner # Show Welcome banner
 
 if [ $iotCType -eq 1 ]
+clear
+echo "Please enter the User Principal Name of the logged-in user"
+echo "     example: john.doe@microsoft.com"
+read -p "Enter UPN:" userName
+clear
+
 then
     echo '1. Starting deployment of IoT Analytics Lab'
 else
@@ -278,6 +286,7 @@ get_deployment_output  # Get Deployment output values
 # Start Configuration
 if [ $deployADX == true ] 
 then
+
     configure_ADX_cluster & # Configure ADX cluster
     spinner "Configuring ADX Cluster"
 fi
@@ -287,6 +296,7 @@ az account get-access-token --resource https://apps.azureiotcentral.com --only-s
 
 if [ $deployADT == true ] 
 then
+    az role assignment create --scope /subscriptions/92288740-be22-448e-b3a1-697c0535e005/resourceGroups/ADXConnectedDevices25131/providers/Microsoft.DigitalTwins/digitalTwinsInstances/digitaltwinpm25131 --role 'bcd981a7-7f74-457b-83e1-cceb9e632ffe' --assignee $userName --output none
     create_digital_twin_models & # Create all the models from folder in git repo
     spinner "Creating model for Azure Digital Twins $dtName"
 fi
