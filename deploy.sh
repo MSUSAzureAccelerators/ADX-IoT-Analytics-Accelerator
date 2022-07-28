@@ -261,13 +261,12 @@ floors=('DAL1' 'DAL2' 'DAL3' 'DAL4' 'DAL5' 'DAL6' 'SEA1' 'SEA2' 'SEA3' 'SEA4' 'S
 banner # Show Welcome banner
 
 if [ $iotCType -eq 1 ]
-clear
-echo "Please enter the User Principal Name of the logged-in user"
-echo "     example: john.doe@microsoft.com"
-read -p "Enter UPN:" userName
-clear
-
 then
+    clear
+    echo "Please enter the User Principal Name of the logged-in user"
+    echo "     example: john.doe@microsoft.com"
+    read -p "Enter UPN:" userName
+    clear
     echo '1. Starting deployment of IoT Analytics Lab'
 else
     echo '1. Starting deployment of IoT Open Hack Environment'
