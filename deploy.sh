@@ -115,6 +115,10 @@ function configure_ADX_cluster() {
         --account-key $saKey --account-name $saName --only-show-errors --output none  ;\
 }
 
+function upload_JSON_storage() {
+    az storage blob upload-batch -d data --account-name $saName --account-key $saKey -s /hackData --pattern *.json 
+}
+
 function create_digital_twin_models() {
     az dt model create -n $dtName --from-directory ./dtconfig  --only-show-errors --output none ; \
     az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Office;1" --twin-id Dallas --only-show-errors --output none; \
@@ -242,7 +246,7 @@ rgName=ADXIoTAnalytics$randomNum
 clear
 echo "Please select from below deployment options"
 echo "     1. ADX IoT Workshop"
-echo "     2. ADX IoT Open Hack"
+echo "     2. ADX IoT Micro Hack"
 read -p "Enter number:" iotCType
 
 while [ $iotCType != 1 ] && [ $iotCType != 2 ]
@@ -250,7 +254,7 @@ do
     echo "UNKNOWN OPTION SELECTED :("
     echo "Please select from below deployment options"
     echo "     1. ADX IoT Workshop"
-    echo "     2. ADX IoT Open Hack"
+    echo "     2. ADX IoT Micro Hack"
     read -p "Enter number:" iotCType
 done
 
@@ -312,6 +316,12 @@ else
     deploy_thermostat_devices # Deploy Thermostat simulated devices
     configure_IoT_Central_output & # On IoT Central, create an Event Hub export and destination with json payload
     spinner " Creating IoT Central App export and destination on IoT Central: $iotCentralName ($iotCentralAppID)"
+fi
+
+if [ $iotCType -eq 2 ]
+then
+    upload_JSON_storage
+    spinner " Uploading json files to storage account"
 fi
 
 echo "3. Configuration completed"

@@ -14,8 +14,15 @@ resource storageaccount 'Microsoft.Storage/storageAccounts@2021-06-01' = {
 
 }
 
-resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@2021-06-01' = {
+resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@2021-06-01' = if(deployADX){
   name: '${saname}/default/adxscript'
+  dependsOn: [
+    storageaccount
+  ]
+}
+
+resource hackcontainer 'Microsoft.Storage/storageAccounts/blobServices/containers@2021-06-01' = if(deployADX == false){
+  name: '${saname}/default/data'
   dependsOn: [
     storageaccount
   ]
