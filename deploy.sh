@@ -113,7 +113,7 @@ function configure_ADX_cluster() {
 }
 
 function upload_JSON_storage() {
-    az storage blob upload-batch -d data --account-name $saName --account-key $saKey -s /hackData/ --pattern *.json 
+    az storage blob upload-batch -d data -s ./hackData/ --account-name $saName --only-show-errors --output none ;\
 }
 
 function create_digital_twin_models() {
