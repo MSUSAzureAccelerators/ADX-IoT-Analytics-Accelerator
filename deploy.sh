@@ -296,7 +296,7 @@ az account get-access-token --resource https://apps.azureiotcentral.com --only-s
 
 if [ $deployADT == true ] 
 then
-    az role assignment create --scope /subscriptions/92288740-be22-448e-b3a1-697c0535e005/resourceGroups/ADXConnectedDevices25131/providers/Microsoft.DigitalTwins/digitalTwinsInstances/digitaltwinpm25131 --role 'bcd981a7-7f74-457b-83e1-cceb9e632ffe' --assignee $userName --output none
+    az role assignment create --scope $adtID --role 'bcd981a7-7f74-457b-83e1-cceb9e632ffe' --assignee $userName --output none
     create_digital_twin_models & # Create all the models from folder in git repo
     spinner "Creating model for Azure Digital Twins $dtName"
 fi
