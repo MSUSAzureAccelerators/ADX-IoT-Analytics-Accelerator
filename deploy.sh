@@ -68,11 +68,8 @@ function get_deployment_output() {
     dtName=$(az deployment group show -n $deploymentName -g $rgName --query properties.outputs.digitalTwinName.value --output tsv)
     dtHostName=$(az deployment group show -n $deploymentName -g $rgName --query properties.outputs.digitalTwinHostName.value --output tsv)
     saName=$(az deployment group show -n $deploymentName -g $rgName --query properties.outputs.saName.value --output tsv)
-    if [ $iotCType -eq 1 ]
-    then
-        saKey=$(az storage account keys list --account-name $saName --query [0].value -o tsv)
-        saId=$(az deployment group show -n $deploymentName -g $rgName --query properties.outputs.saId.value --output tsv)
-    fi
+    saKey=$(az storage account keys list --account-name $saName --query [0].value -o tsv)
+    saId=$(az deployment group show -n $deploymentName -g $rgName --query properties.outputs.saId.value --output tsv)
     adtID=$(az deployment group show -n $deploymentName -g $rgName --query properties.outputs.digitalTwinId.value --output tsv)
     adxName=$(az deployment group show -n $deploymentName -g $rgName --query properties.outputs.adxName.value --output tsv)
     adxResoureId=$(az deployment group show -n $deploymentName -g $rgName --query properties.outputs.adxClusterId.value --output tsv)
