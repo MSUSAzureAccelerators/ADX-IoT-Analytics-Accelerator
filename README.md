@@ -1,10 +1,10 @@
 ![MSUS Solution Accelerator](./images/MSUS%20Solution%20Accelerator%20Banner%20Two_981.png)
 
-# ADX IoT Analytics Solution Accelerator
-Azure Data Explorer can provide valuable insights into your Iot workloads. In this solution we will showcase what an IoT analytics solution would look like using simulated IoT Devices. This solution acceleartor allows you to choose between two different demo solutions.  
+# ADX IoT Analytics Accelerator
+Azure Data Explorer can provide valuable insights into your IoT workloads. In this accelerator we will showcase what an IoT analytics solution would look like using simulated IoT Devices. This accelerator allows you to choose between two different demo solutions.  
 
 - ADX IoT Workshop
-This will deploy a completely configured environment where after deployment you'll have simulated devices, an Azure Digitl Twins representation, configured Azure Data Explorer cluster with both historical data (month of January) and new simulated data flowing in through Event Hub via IoT Central. This will allow you to get to the KQL query experience immediately after deployment.
+This will deploy a completely configured environment where after deployment you'll have simulated devices, an Azure Digital Twins representation, configured Azure Data Explorer cluster with both historical data (month of January) and new simulated data flowing in through Event Hub via IoT Central. This will allow you to get to the KQL query experience immediately after deployment.
   - IoT Central Store Analytics Template 
     - 36 thermostat devices being created and simulated
     - Setup Export to Event Hub of telemetry data
@@ -33,7 +33,7 @@ This deploys the components needed for your IoT Analytics and lets you experienc
 
 ## Deployment instructions
 
-On the [Azure Cloud Shell](https://shell.azure.com/) run the following commands to deploy the solution:
+On the [Azure Cloud Shell](https://shell.azure.com/) run the following commands to deploy the accelerator:
 1. Login to Azure
     ```bash
     az login
