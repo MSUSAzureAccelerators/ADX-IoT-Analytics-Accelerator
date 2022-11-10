@@ -93,10 +93,10 @@ Explore content [here](https://github.com/Azure/azure-kusto-microhack)
   - digitaltwin.bicep: Digital Twin Bicep deployment file
   - eventhub.bicep: Event Hub Bicep deployment file
   - iotcentral.bicep: IoT Central Bicep deployment file
-  - storage.bicep: Storage Bicep deployment file. This account is used as temporary storage to download ADX database configuration scripts)
+  - storage.bicep: Storage Bicep deployment file - this account is used as temporary storage to download ADX database configuration scripts
 
-- deploy.sh: script to deploy the solution. THe only one you need to run 
-- main.bicep: main Bicep deployment file. It includes all the other Bicep deployment files (modules)
+- deploy.sh: script to deploy the solution - the only one you need to run 
+- main.bicep: main Bicep deployment file - it includes all the other Bicep deployment files (modules)
 - patientmonitoring.parameters.json: parameters file used to customize the deployment
 - README.md: This README file
 
