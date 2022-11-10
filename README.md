@@ -48,7 +48,7 @@ On the [Azure Cloud Shell](https://shell.azure.com/) run the following commands 
 
 3. Get the latest version of the repository
     ```bash
-    git clone https://github.com/MSUSSolutionAccelerators/ADX-IoT-Analytics-Solution-Accelerator.git
+    git clone https://github.com/MSUSSolutionAccelerators/ADX-IoT-Analytics-Accelerator.git
     ```
 
 4. Deploy accelerator
