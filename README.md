@@ -71,7 +71,7 @@ Explore content [here](https://github.com/Azure/azure-kusto-microhack)
 
  ![IoT Micro Hack](./images/mharchitecture.png)
 
-### Deployment Example:
+### Deployment Example
 ![SampleCLIOutput](assets/SampleCLIOutput.png "SampleCLIOutput")
 
 ## Files used in the accelerator
@@ -98,7 +98,7 @@ Explore content [here](https://github.com/Azure/azure-kusto-microhack)
 - deploy.sh: script to deploy the solution - the only one you need to run 
 - main.bicep: main Bicep deployment file - it includes all the other Bicep deployment files (modules)
 - patientmonitoring.parameters.json: parameters file used to customize the deployment
-- README.md: This README file
+- README.md: this README file
 
 ## License
 Copyright (c) Microsoft Corporation
