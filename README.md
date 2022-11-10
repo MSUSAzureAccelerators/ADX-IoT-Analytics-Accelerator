@@ -51,7 +51,7 @@ On the [Azure Cloud Shell](https://shell.azure.com/) run the following commands 
     git clone https://github.com/MSUSSolutionAccelerators/ADX-IoT-Analytics-Solution-Accelerator.git
     ```
 
-4. Deploy solution
+4. Deploy accelerator
     ```bash
     cd ADXIoTAnalytics
     . ./deploy.sh
@@ -74,7 +74,7 @@ Explore content [here](https://github.com/Azure/azure-kusto-microhack)
 ### Deployment Example:
 ![SampleCLIOutput](assets/SampleCLIOutput.png "SampleCLIOutput")
 
-## Files used in the solution
+## Files used in the accelerator
 
 - **asssets folder**: contains the following files:
   - AutomationPresentation.gif: quick explanation of the solution
