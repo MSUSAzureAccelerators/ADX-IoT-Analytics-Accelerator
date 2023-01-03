@@ -119,6 +119,8 @@ function upload_JSON_storage() {
 }
 
 function deploy_thermostat_devices() {
+    az iot central device delete --device-id 'Thermostat' --app-id $iotCentralAppID --output none
+    az iot central device delete --device-id 'Occupancy' --app-id $iotCentralAppID --output none
     if [ "$iotCentralType" == 'Store Analytics' ] 
     then
         iotCentralTemplate='dtmi:m43gbjjsrr5:fp1yz0dm0qs'

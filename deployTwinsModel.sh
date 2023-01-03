@@ -147,8 +147,10 @@ function create_digital_twin_models() {
 }
 
 function deploy_thermostat_devices() {
-    for (( c=1; c<=$numDevices; c++ ))
+    c=0;
+    for deviceId in $(az iot central device list --app-id $iotCentralAppID --query [].displayName --output tsv)
     do 
+        c=$((c+1))
         floornum=$(expr $c % 18)
         floor=${floors[$floornum]}
         az dt twin create -n $dtName -g $rgName --dtmi "dtmi:StageIoTRawData:Thermostat;1" --twin-id $deviceId \
