@@ -118,85 +118,6 @@ function upload_JSON_storage() {
     az storage copy -s 'https://adxmicrohacksa.blob.core.windows.net/logistics-telemetry-data-july-22?sp=rl&st=2022-08-02T13:54:43Z&se=2024-08-02T21:54:43Z&spr=https&sv=2021-06-08&sr=c&sig=VjcLSN6vylf%2BfvsB5WiDFhNUuT514YPiDHfWaMl9PgQ%3D' --destination-account-name $saName --destination-container data --recursive --only-show-errors --output none ;\
 }
 
-function create_digital_twin_models() {
-    az dt model create -n $dtName --from-directory ./dtconfig  --only-show-errors --output none ; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Office;1" --twin-id Dallas --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Office;1" --twin-id Seattle --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Office;1" --twin-id Atlanta --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id DAL1 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id DAL2 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id DAL3 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id DAL4 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id DAL5 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id DAL6 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id SEA1 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id SEA2 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id SEA3 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id SEA4 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id SEA5 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id SEA6 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id ATL1 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id ATL2 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id ATL3 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id ATL4 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id ATL5 --only-show-errors --output none; \
-    az dt twin create -n $dtName --dtmi "dtmi:StageIoTRawData:Floor;1" --twin-id ATL6 --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'DAL_F1'  \
-        --relationship 'officecontainsfloors' --source 'Dallas' --target 'DAL1' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'DAL_F2'  \
-        --relationship 'officecontainsfloors' --source 'Dallas' --target 'DAL2' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'DAL_F3'  \
-        --relationship 'officecontainsfloors' --source 'Dallas' --target 'DAL3' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'DAL_F4'  \
-        --relationship 'officecontainsfloors' --source 'Dallas' --target 'DAL4' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'DAL_F5'  \
-        --relationship 'officecontainsfloors' --source 'Dallas' --target 'DAL5' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'DAL_F6'  \
-        --relationship 'officecontainsfloors' --source 'Dallas' --target 'DAL6' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'SEA_F1'  \
-        --relationship 'officecontainsfloors' --source 'Seattle' --target 'SEA1' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'SEA_F2'  \
-        --relationship 'officecontainsfloors' --source 'Seattle' --target 'SEA2' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'SEA_F3'  \
-        --relationship 'officecontainsfloors' --source 'Seattle' --target 'SEA3' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'SEA_F4'  \
-        --relationship 'officecontainsfloors' --source 'Seattle' --target 'SEA4' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'SEA_F5'  \
-        --relationship 'officecontainsfloors' --source 'Seattle' --target 'SEA5' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'SEA_F6'  \
-        --relationship 'officecontainsfloors' --source 'Seattle' --target 'SEA6' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'ATL_F1'  \
-        --relationship 'officecontainsfloors' --source 'Atlanta' --target 'ATL1' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'ATL_F2'  \
-        --relationship 'officecontainsfloors' --source 'Atlanta' --target 'ATL2' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'ATL_F3'  \
-        --relationship 'officecontainsfloors' --source 'Atlanta' --target 'ATL3' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'ATL_F4'  \
-        --relationship 'officecontainsfloors' --source 'Atlanta' --target 'ATL4' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'ATL_F5'  \
-        --relationship 'officecontainsfloors' --source 'Atlanta' --target 'ATL5' \
-        --only-show-errors --output none; \
-    az dt twin relationship create -n $dtName --relationship-id 'ATL_F6'  \
-        --relationship 'officecontainsfloors' --source 'Atlanta' --target 'ATL6' \
-        --only-show-errors --output none; \
-}
-
 function deploy_thermostat_devices() {
     if [ "$iotCentralType" == 'Store Analytics' ] 
     then
@@ -209,18 +130,6 @@ function deploy_thermostat_devices() {
         deviceId=$(cat /proc/sys/kernel/random/uuid)
         az iot central device create --device-id $deviceId --app-id $iotCentralAppID \
             --template $iotCentralTemplate --simulated --only-show-errors --output none
-
-        if [ $deployADT == true ] 
-        then
-            floornum=$(expr $c % 18)
-        
-            floor=${floors[$floornum]}
-            
-            az dt twin create -n $dtName -g $rgName --dtmi "dtmi:StageIoTRawData:Thermostat;1" --twin-id $deviceId \
-                --only-show-errors --output none ;\
-            az dt twin relationship create -n $dtName -g $rgName --relationship-id "contains${deviceId}" \
-                --relationship 'floorcontainsdevices' --source $floor --target $deviceId --only-show-errors --output none
-        fi
     done
 }
 
@@ -240,6 +149,9 @@ currentDate=$(date)
 tomorrow=$(date +"%Y-%m-%dT00:00:00Z" -d "$currentDate +1 days")
 deploymentName=ADXIoTAnalyticsDeployment$randomNum
 rgName=ADXIoTAnalytics$randomNum
+
+echo $deploymentName > output.txt
+echo $rgName >> output.txt
 
 
 clear
@@ -265,11 +177,6 @@ banner # Show Welcome banner
 
 if [ $iotCType -eq 1 ]
 then
-    clear
-    echo "Please enter the User Principal Name of the logged-in user"
-    echo "     example: john.doe@microsoft.com"
-    read -p "Enter UPN:" userName
-    clear
     echo '1. Starting deployment of IoT Analytics Lab'
 else
     echo '1. Starting deployment of IoT Open Hack Environment'
@@ -288,7 +195,6 @@ get_deployment_output  # Get Deployment output values
 # Start Configuration
 if [ $deployADX == true ] 
 then
-
     configure_ADX_cluster & # Configure ADX cluster
     spinner "Configuring ADX Cluster"
 fi
@@ -296,17 +202,10 @@ fi
 # Get/Refresh IoT Central Token 
 az account get-access-token --resource https://apps.azureiotcentral.com --only-show-errors --output none
 
-if [ $deployADT == true ] 
-then
-    az role assignment create --scope $adtID --role 'bcd981a7-7f74-457b-83e1-cceb9e632ffe' --assignee $userName --output none
-    create_digital_twin_models & # Create all the models from folder in git repo
-    spinner "Creating model for Azure Digital Twins $dtName"
-fi
-
 # Complete configuration
 if [ $deployADT == true ] 
 then
-    echo "Creating $numDevices devices on IoT Central: $iotCentralName ($iotCentralAppID) and Digital Twins: $dtName"
+    echo "Creating $numDevices devices on IoT Central: $iotCentralName ($iotCentralAppID)"
     deploy_thermostat_devices # Deploy Thermostat simulated devices
     configure_IoT_Central_output & # On IoT Central, create an Event Hub export and destination with json payload
     spinner " Creating IoT Central App export and destination on IoT Central: $iotCentralName ($iotCentralAppID)"
@@ -323,4 +222,11 @@ then
     spinner " Uploading json files to storage account"
 fi
 
-echo "3. Configuration completed"
+if [ $iotCType -eq 1 ]
+then
+    echo 'Continue with directions on ADX-IoT-Analytics-Accelerator GitHub Page'
+else
+    echo "3. Configuration completed"
+fi
+
+

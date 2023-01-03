@@ -57,7 +57,29 @@ On the [Azure Cloud Shell](https://shell.azure.com/) run the following commands 
     . ./deploy.sh
     ```
 
-5. Choose which environment to deploy from the options provided 
+5. Choose which environment to deploy from the options provided  
+
+** This is the last step for the ADX MicroHack. The next steps are only for the IoT Analytics Workshop **
+
+### Additional Steps for IoT Analytics Worksop
+1. In the Azure portal open the Resource Group that was created during deployment.
+
+2. Click on the "Azure Digital Twins" resource (digitaltwinpmxxxx)
+
+3. Under "Access control (IAM)" add yourself to the "Azure Digital Twins Data Owner" role. [Assign Azure roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal)
+
+4. Either go back to the [Azure Cloud Shell](https://shell.azure.com/) or open a new one.
+
+5. If you have more than one subscription, select the appropriate one:
+    ```bash
+    az account set --subscription "<your-subscription>"
+    ```
+
+6. Deploy the digital twins model
+    ```bash
+    cd ADXIoTAnalytics
+    . ./deployTwinsModel.sh
+    ```
 
 ### IoT Analytics Workshop 
 
