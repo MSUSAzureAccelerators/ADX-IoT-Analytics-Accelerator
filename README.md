@@ -1,10 +1,10 @@
 ![MSUS Solution Accelerator](./images/MSUS%20Solution%20Accelerator%20Banner%20Two_981.png)
 
-# ADX IoT Analytics Solution Accelerator
-Azure Data Explorer can provide valuable insights into your Iot workloads. In this solution we will showcase what an IoT analytics solution would look like using simulated IoT Devices. This solution acceleartor allows you to choose between two different demo solutions.  
+# ADX IoT Analytics Accelerator
+Azure Data Explorer can provide valuable insights into your IoT workloads. In this accelerator we will showcase what an IoT analytics solution would look like using simulated IoT Devices. This accelerator allows you to choose between two different demo solutions.  
 
 - ADX IoT Workshop
-This will deploy a completely configured environment where after deployment you'll have simulated devices, an Azure Digitl Twins representation, configured Azure Data Explorer cluster with both historical data (month of January) and new simulated data flowing in through Event Hub via IoT Central. This will allow you to get to the KQL query experience immediately after deployment.
+This will deploy a completely configured environment where after deployment you'll have simulated devices, an Azure Digital Twins representation, configured Azure Data Explorer cluster with both historical data (month of January) and new simulated data flowing in through Event Hub via IoT Central. This will allow you to get to the KQL query experience immediately after deployment.
   - IoT Central Store Analytics Template 
     - 36 thermostat devices being created and simulated
     - Setup Export to Event Hub of telemetry data
@@ -33,7 +33,7 @@ This deploys the components needed for your IoT Analytics and lets you experienc
 
 ## Deployment instructions
 
-On the [Azure Cloud Shell](https://shell.azure.com/) run the following commands to deploy the solution:
+On the [Azure Cloud Shell](https://shell.azure.com/) run the following commands to deploy the accelerator:
 1. Login to Azure
     ```bash
     az login
@@ -48,10 +48,10 @@ On the [Azure Cloud Shell](https://shell.azure.com/) run the following commands 
 
 3. Get the latest version of the repository
     ```bash
-    git clone https://github.com/MSUSSolutionAccelerators/ADX-IoT-Analytics-Solution-Accelerator.git
+    git clone https://github.com/MSUSSolutionAccelerators/ADX-IoT-Analytics-Accelerator.git
     ```
 
-4. Deploy solution
+4. Deploy accelerator
     ```bash
     cd ADXIoTAnalytics
     . ./deploy.sh
@@ -93,10 +93,10 @@ Explore content [here](https://github.com/Azure/azure-kusto-microhack)
 
  ![IoT Micro Hack](./images/mharchitecture.png)
 
-### Deployment Example:
+### Deployment Example
 ![SampleCLIOutput](assets/SampleCLIOutput.png "SampleCLIOutput")
 
-## Files used in the solution
+## Files used in the accelerator
 
 - **asssets folder**: contains the following files:
   - AutomationPresentation.gif: quick explanation of the solution
@@ -115,15 +115,14 @@ Explore content [here](https://github.com/Azure/azure-kusto-microhack)
   - digitaltwin.bicep: Digital Twin Bicep deployment file
   - eventhub.bicep: Event Hub Bicep deployment file
   - iotcentral.bicep: IoT Central Bicep deployment file
-  - storage.bicep: Storage Bicep deployment file. This account is used as temporary storage to download ADX database configuration scripts)
+  - storage.bicep: Storage Bicep deployment file - this account is used as temporary storage to download ADX database configuration scripts
 
-- deploy.sh: script to deploy the solution. THe only one you need to run 
-- main.bicep: main Bicep deployment file. It includes all the other Bicep deployment files (modules)
+- deploy.sh: script to deploy the solution - the only one you need to run 
+- main.bicep: main Bicep deployment file - it includes all the other Bicep deployment files (modules)
 - patientmonitoring.parameters.json: parameters file used to customize the deployment
-- README.md: This README file
+- README.md: this README file
 
 ## License
-
 Copyright (c) Microsoft Corporation
 
 All rights reserved.
@@ -135,6 +134,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
+
 
 ## Contributing
 
@@ -152,8 +152,8 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 ## Trademarks
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
-trademarks or logos is subject to and must follow 
+This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to and must follow 
 [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
 Any use of third-party trademarks or logos are subject to those third-party's policies.
+
