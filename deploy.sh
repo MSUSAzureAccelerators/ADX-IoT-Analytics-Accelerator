@@ -115,7 +115,7 @@ function configure_ADX_cluster() {
 function upload_JSON_storage() {
     az storage copy -s 'https://adxmicrohacksa.blob.core.windows.net/nyc-taxi-july-22?sp=rl&st=2022-08-02T13:49:40Z&se=2025-08-02T21:49:40Z&spr=https&sv=2021-06-08&sr=c&sig=H7AMVTINcdg8cuGjWNp3yqYyDDWC1uyCTMiEQmbxBqU%3D' --destination-account-name $saName --destination-container data --recursive --only-show-errors --output none ;\
 
-    az storage copy -s 'https://adxmicrohacksa.blob.core.windows.net/logistics-telemetry-data-july-22?sp=rl&st=2022-08-02T13:54:43Z&se=2024-08-02T21:54:43Z&spr=https&sv=2021-06-08&sr=c&sig=VjcLSN6vylf%2BfvsB5WiDFhNUuT514YPiDHfWaMl9PgQ%3D' --destination-account-name $saName --destination-container data --recursive --only-show-errors --output none ;\
+    az storage copy -s 'https://adxmicrohacksa.blob.core.windows.net/logistics-telemetry-data-july-22?sp=racli&st=2024-09-25T04:35:33Z&se=2030-02-01T12:35:33Z&spr=https&sv=2022-11-02&sr=c&sig=zH%2F61%2FnRONfv%2BOio0bRAtz1LgJIFcof8xkTlnWXIWso%3D' --destination-account-name $saName --destination-container data --recursive --only-show-errors --output none ;\
 }
 
 function deploy_thermostat_devices() {
